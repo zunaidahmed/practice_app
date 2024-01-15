@@ -298,11 +298,11 @@ class HomeScreenState extends State<HomeScreen> {
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
-                      // Show a Snackbar when CHECK OUT button is pressed
+
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text('Congratulations for checkout'),
-                          duration: Duration(seconds: 2), // Adjust the duration as needed
+                          duration: Duration(seconds: 2),
                         ),
                       );
                     },
