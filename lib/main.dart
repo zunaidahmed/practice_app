@@ -100,9 +100,50 @@ class HomeScreenState extends State<HomeScreen> {
                                            ),
                                            Row(
                                              children: [
-                                               Text('Color : ${data[index]['color']}'??''),
+                                               RichText(
+                                                 text: TextSpan(
+                                                   style: DefaultTextStyle.of(context).style,
+                                                   children: <TextSpan>[
+                                                     TextSpan(
+                                                       text: 'Color: ',
+                                                       style: TextStyle(
+                                                         color: Colors.grey, // Color for "Size"
+                                                         fontWeight: FontWeight.w500,
+                                                       ),
+                                                     ),
+                                                     TextSpan(
+                                                       text: '${data[index]['color']}',
+                                                       style: TextStyle(
+                                                         color: Colors.black,
+                                                         fontWeight: FontWeight.w500
+                                                       ),
+                                                     ),
+                                                   ],
+                                                 ),
+                                               ),
+
                                                SizedBox(width: 5),
-                                               Text('Size : ${data[index]['size']}'??''),
+                                               RichText(
+                                                 text: TextSpan(
+                                                   style: DefaultTextStyle.of(context).style,
+                                                   children: <TextSpan>[
+                                                     TextSpan(
+                                                       text: 'Size: ',
+                                                       style: TextStyle(
+                                                         color: Colors.grey, // Color for "Size"
+                                                         fontWeight: FontWeight.w500,
+                                                       ),
+                                                     ),
+                                                     TextSpan(
+                                                       text: '${data[index]['size']}',
+                                                       style: TextStyle(
+                                                           color: Colors.black,
+                                                           fontWeight: FontWeight.w500
+                                                       ),
+                                                     ),
+                                                   ],
+                                                 ),
+                                               ),
                                              ],
                                            ),
 
