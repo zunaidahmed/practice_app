@@ -297,7 +297,15 @@ class HomeScreenState extends State<HomeScreen> {
               children: [
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // Show a Snackbar when CHECK OUT button is pressed
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Congratulations for checkout'),
+                          duration: Duration(seconds: 2), // Adjust the duration as needed
+                        ),
+                      );
+                    },
                     child: Text('CHECK OUT', style: TextStyle(fontSize: 20)),
                     style: ElevatedButton.styleFrom(
                       primary: Colors.red,
@@ -306,7 +314,7 @@ class HomeScreenState extends State<HomeScreen> {
                   ),
                 )
               ],
-            )
+            ),
           ],
         ),
       ),
