@@ -19,55 +19,83 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 0;
 
-  List<Widget> screens = [
+
+
+ /* int _selectedIndex = 0;*/
+
+  /*List<Widget> screens = [
     const Text('HOME'),
     const Text('PROFILE'),
     const Text('SEARCH'),
     const Text('SETTING'),
   ];
+*/
+
+  List<Widget> list = [
+
+    const Text('HOME'),
+    const Text('PERSON'),
+    const Text('SEARCH'),
+    const Text('SETTING'),
+    const Text('MAN'),
+
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.lightGreen,
-          title: const Text("Name"),
+    return DefaultTabController(length: 5, child: Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.lightGreen,
+        title: const Text('Facebook'),
+        bottom: const TabBar(
+          indicatorColor: Colors.white,
+          unselectedLabelColor: Colors.red,
+          labelColor: Colors.blue,
+          tabs: [
+            Tab(
+              icon: Icon(Icons.home),
+              text: 'HOME',
+            ),
+
+            Tab(
+              icon: Icon(Icons.person),
+              text: 'PERSON',
+            ),
+
+            Tab(
+              icon: Icon(Icons.search),
+              text: 'SEARCH',
+            ),
+
+            Tab(
+              icon: Icon(Icons.settings),
+              text: 'SETTING',
+            ),
+
+            Tab(
+              icon: Icon(Icons.face),
+              text: 'FACE',
+            ),
+          ],
+          
         ),
 
-        body: Center(
-          child: screens[_selectedIndex],
-        ),
+      ),
 
-      bottomNavigationBar: BottomNavigationBar(
-      currentIndex: _selectedIndex,
-      backgroundColor: Colors.amberAccent,
-      selectedItemColor: Colors.blue,
-      unselectedItemColor: Colors.grey,
-      type: BottomNavigationBarType.shifting,
-      iconSize: 40,
+      body: const TabBarView(
+        children: [
+              Center(child: Text('HOME')),
+              Center(child: Text('PERSON')),
+              Center(child: Text('SEARCH')),
+              Center(child: Text('SETTING')),
+              Center(child: Text('FACE')),
+            ],
+          ),
 
-      showSelectedLabels: true,
-      showUnselectedLabels: false,
-      selectedLabelStyle: const TextStyle(
-          fontSize: 25, fontWeight: FontWeight.bold, color: Colors.black),
-      onTap: (index) {
-        print(index);
-        _selectedIndex = index;
-
-        setState(() {});
-      },
-      items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-        BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.settings), label: 'Setting'),
-      ],
-    ),
+      ),
 
     );
+
   }
 }
-
