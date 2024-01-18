@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: _SecondScreen(),
+      home: HomeScreen(),
     );
   }
 }
@@ -68,25 +68,6 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
 
     );
-  }
-}
-
-class _SecondScreen extends StatefulWidget {
-  @override
-  State<_SecondScreen> createState() => _SecondScreenState();
-}
-
-class _SecondScreenState extends State<_SecondScreen> {
-  
-   var count= 0;
-  
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-
-
-     );
-
   }
 }
 
