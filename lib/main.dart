@@ -77,13 +77,16 @@ class _SecondScreen extends StatefulWidget {
 }
 
 class _SecondScreenState extends State<_SecondScreen> {
+  
+   var count= 0;
+  
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
 
 
+     );
 
-    );
   }
 }
 
