@@ -18,32 +18,41 @@ class _TodoListScreenState extends State<TodoListScreen> {
           'Todos',
         ),
       ),
-      body: ListView.builder(
-          itemCount: 10,
-          itemBuilder: (context, index) {
-            return ListTile(
-                title: const Text('Todo Tilte'),
-                subtitle: const Text('Todo Body'),
-                trailing: Wrap(
-                  children: [
-                    IconButton(
-                      onPressed: showDialogConfirmation,
-                      icon: const Icon(Icons.delete_forever_outlined),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const EditTodoScreen(),
-                          ),
-                        );
-                      },
-                      icon: const Icon(Icons.edit),
-                    ),
-                  ],
-                ));
-          }),
+      body: ListView.separated(
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: const Text('Todo Title'),
+            subtitle: const Text('Todo Body'),
+            trailing: Wrap(
+              children: [
+                IconButton(
+                  onPressed: showDialogConfirmation,
+                  icon: const Icon(Icons.delete_forever_outlined),
+                ),
+                IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const EditTodoScreen(),
+                      ),
+                    );
+                  },
+                  icon: const Icon(Icons.edit),
+                ),
+              ],
+            ),
+          );
+        },
+        separatorBuilder: (BuildContext context, int index) {
+          return Divider(
+            height: 12,
+            indent: 16,
+            color: Colors.grey.shade200,
+          );
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(context,
@@ -54,7 +63,6 @@ class _TodoListScreenState extends State<TodoListScreen> {
       ),
     );
   }
-
 
   void showDialogConfirmation() {
     showDialog(
