@@ -17,6 +17,7 @@ class TodoApp extends StatelessWidget {
                 fontWeight: FontWeight.w600, color: Colors.white, fontSize: 18),
           ),
           inputDecorationTheme: const InputDecorationTheme(
+            border: OutlineInputBorder(),
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.brown),
             ),

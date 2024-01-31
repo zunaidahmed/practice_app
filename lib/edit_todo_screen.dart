@@ -1,14 +1,14 @@
 import 'package:code_practice_with_flutter/todo_list_screen.dart';
 import 'package:flutter/material.dart';
 
-class NewTodoScreen extends StatefulWidget {
-  const NewTodoScreen({super.key});
+class EditTodoScreen extends StatefulWidget {
+  const EditTodoScreen({super.key});
 
   @override
-  State<NewTodoScreen> createState() => _NewTodoScreenState();
+  State<EditTodoScreen> createState() => _NewTodoScreenState();
 }
 
-class _NewTodoScreenState extends State<NewTodoScreen> {
+class _NewTodoScreenState extends State<EditTodoScreen> {
 
   final _formkey = GlobalKey<FormState>();
 
@@ -18,7 +18,7 @@ class _NewTodoScreenState extends State<NewTodoScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'TODO SCREEN',
+          'EDIT TODO',
         ),
       ),
       body: Padding(
@@ -67,7 +67,7 @@ class _NewTodoScreenState extends State<NewTodoScreen> {
                         
                       }
 
-                    }, child: const Text('Add')),
+                    }, child: const Text('Update')),
               )
             ],
           ),
