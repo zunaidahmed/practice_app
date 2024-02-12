@@ -60,12 +60,7 @@ class _PhotoListScreenState extends State<PhotoListScreen> {
       var decodePhoto = jsonDecode(response.body);
 
       for (var item in decodePhoto) {
-        PhotoGallery photoGallery = PhotoGallery(
-            albumId: item['albumId'],
-            id: item['id'],
-            title: item['title'],
-            url: item['url'],
-            thumbnailUrl: item['thumbnailUrl']);
+        PhotoGallery photoGallery = PhotoGallery.fromJson(item);
 
         galleryList.add(photoGallery);
       }

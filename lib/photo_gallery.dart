@@ -6,7 +6,7 @@ class PhotoGallery {
   String? url;
   String? thumbnailUrl;
 
-  PhotoGallery({
+  PhotoGallery ( {
     this.albumId,
     this.title,
     this.id,
@@ -15,5 +15,15 @@ class PhotoGallery {
 
   });
 
+  PhotoGallery.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    albumId = json['albumId'];
+    id =  json['id'];
+    title = json['title'];
+    url = json['url'];
+    thumbnailUrl = json['thumbnailUrl'];
+    
+  }
+ 
 
 }
