@@ -1,9 +1,7 @@
 import 'dart:convert';
-
 import 'package:code_practice_with_flutter/photo_details.dart';
 import 'package:code_practice_with_flutter/photo_gallery.dart';
 import 'package:flutter/material.dart';
-
 import 'package:http/http.dart';
 
 class PhotoListScreen extends StatefulWidget {
@@ -20,8 +18,7 @@ class _PhotoListScreenState extends State<PhotoListScreen> {
   @override
   void initState() {
     super.initState();
-    getPhotoGalleryList();
-  }
+    getPhotoGalleryList();  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,14 +55,11 @@ class _PhotoListScreenState extends State<PhotoListScreen> {
 
     if (response.statusCode == 200) {
       var decodePhoto = jsonDecode(response.body);
-
       for (var item in decodePhoto) {
         PhotoGallery photoGallery = PhotoGallery.fromJson(item);
-
         galleryList.add(photoGallery);
       }
     }
-
     _getPhotoGalleryProgress = false;
     setState(() {});
   }

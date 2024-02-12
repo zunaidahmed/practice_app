@@ -16,7 +16,6 @@ class PhotoGallery {
   });
 
   PhotoGallery.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
     albumId = json['albumId'];
     id =  json['id'];
     title = json['title'];
@@ -24,6 +23,4 @@ class PhotoGallery {
     thumbnailUrl = json['thumbnailUrl'];
     
   }
- 
-
 }
