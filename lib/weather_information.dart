@@ -37,10 +37,10 @@ class _WeatherInfoScreenState extends State<WeatherInfoScreen> {
                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('City: ${weatherInfo[index].city ??  ''}',style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500),),
-                    Text('Temperature:${weatherInfo[index].temperature?.toString() ?? ''}',style: TextStyle(fontSize: 18),),
-                    Text('Condition: ${weatherInfo[index].condition ?? ''}',style: TextStyle(fontSize: 18),),
-                    Text('Humidity: ${weatherInfo[index].humidity ?.toString() ?? ''}',style: TextStyle(fontSize: 18),),
-                    Text('WindSpeed: ${weatherInfo[index].windSpeed?.toString() ?? ''}',style: TextStyle(fontSize: 18),),
+                    Text('Temperature:${weatherInfo[index].temperature?.toString() ?? ''}',style: TextStyle(fontSize: 18,color: Colors.grey),),
+                    Text('Condition: ${weatherInfo[index].condition ?? ''}',style: TextStyle(fontSize: 18,color: Colors.grey),),
+                    Text('Humidity: ${weatherInfo[index].humidity ?.toString() ?? ''}',style: TextStyle(fontSize: 18,color: Colors.grey),),
+                    Text('WindSpeed: ${weatherInfo[index].windSpeed?.toString() ?? ''}',style: TextStyle(fontSize: 18, color: Colors.grey),),
                   ],
 
                 ),
