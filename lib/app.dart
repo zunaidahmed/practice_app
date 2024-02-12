@@ -1,4 +1,4 @@
-import 'package:code_practice_with_flutter/photo_list_screen.dart';
+import 'package:code_practice_with_flutter/weather_information.dart';
 import 'package:flutter/material.dart';
 
 class PhotoGalleryApp extends StatelessWidget {

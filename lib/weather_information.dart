@@ -1,6 +1,5 @@
 import 'dart:convert';
-import 'package:code_practice_with_flutter/photo_details.dart';
-import 'package:code_practice_with_flutter/photo_gallery.dart';
+import 'package:code_practice_with_flutter/temperature_list.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
@@ -12,7 +11,7 @@ class PhotoListScreen extends StatefulWidget {
 }
 
 class _PhotoListScreenState extends State<PhotoListScreen> {
-  List<PhotoGallery> galleryList = [];
+  List<Temperatures> weatherInfo = [];
   bool _getPhotoGalleryProgress = false;
 
   @override
@@ -24,23 +23,16 @@ class _PhotoListScreenState extends State<PhotoListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Photo Gallery App'),
+        title: const Text('Weather Info App'),
       ),
       body: Visibility(
         visible: _getPhotoGalleryProgress == false,
         replacement: const Center(child: CircularProgressIndicator()),
         child: ListView.builder(
-            itemCount: galleryList.length,
+            itemCount: weatherInfo.length,
             itemBuilder: (context, index) {
               return ListTile(
-                leading: CircleAvatar(
-                  backgroundImage:
-                      NetworkImage(galleryList[index].thumbnailUrl ?? ''),
-                ),
-                title: Text(galleryList[index].title ?? ' '),
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>PhotoDetails(photo: galleryList[index])));
-                },
+                title: Text(weatherInfo[index].city ?? ' '),
               );
             }),
       ),
@@ -50,14 +42,14 @@ class _PhotoListScreenState extends State<PhotoListScreen> {
   Future<void> getPhotoGalleryList() async {
     _getPhotoGalleryProgress = true;
     setState(() {});
-    Uri uri = Uri.parse('https://jsonplaceholder.typicode.com/photos');
+    Uri uri = Uri.parse('https://raw.githubusercontent.com/zunaidahmed/practice_app/weather_info/weather_info.txt');
     Response response = await get(uri);
 
     if (response.statusCode == 200) {
       var decodePhoto = jsonDecode(response.body);
       for (var item in decodePhoto) {
-        PhotoGallery photoGallery = PhotoGallery.fromJson(item);
-        galleryList.add(photoGallery);
+        Temperatures temperatures = Temperatures.fromJson(item);
+        weatherInfo.add(temperatures);
       }
     }
     _getPhotoGalleryProgress = false;
