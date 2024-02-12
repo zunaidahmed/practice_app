@@ -3,16 +3,16 @@ import 'package:code_practice_with_flutter/temperature_list.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
-class PhotoListScreen extends StatefulWidget {
-  const PhotoListScreen({super.key});
+class WeatherInfoScreen extends StatefulWidget {
+  const WeatherInfoScreen({super.key});
 
   @override
-  State<PhotoListScreen> createState() => _PhotoListScreenState();
+  State<WeatherInfoScreen> createState() => _WeatherInfoScreenState();
 }
 
-class _PhotoListScreenState extends State<PhotoListScreen> {
+class _WeatherInfoScreenState extends State<WeatherInfoScreen> {
   List<Temperatures> weatherInfo = [];
-  bool _getPhotoGalleryProgress = false;
+  bool _getWeatherInfoScreenProgress = false;
 
   @override
   void initState() {
@@ -26,21 +26,31 @@ class _PhotoListScreenState extends State<PhotoListScreen> {
         title: const Text('Weather Info App'),
       ),
       body: Visibility(
-        visible: _getPhotoGalleryProgress == false,
+        visible: _getWeatherInfoScreenProgress == false,
         replacement: const Center(child: CircularProgressIndicator()),
         child: ListView.builder(
             itemCount: weatherInfo.length,
             itemBuilder: (context, index) {
-              return ListTile(
-                title: Text(weatherInfo[index].city ?? ' '),
+             return Column(
+               mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text('City: ${weatherInfo[index].city ??  ''}'),
+                 // Text(weatherInfo[index].temperature ?? ''),
+                  Text(weatherInfo[index].condition ?? ''),
+                 // Text(weatherInfo[index].humidity ?? ''),
+                 // Text(weatherInfo[index].windSpeed ?? ''),
+                ],
+                
               );
+
+             
             }),
       ),
     );
   }
 
   Future<void> getPhotoGalleryList() async {
-    _getPhotoGalleryProgress = true;
+    _getWeatherInfoScreenProgress = true;
     setState(() {});
     Uri uri = Uri.parse('https://raw.githubusercontent.com/zunaidahmed/practice_app/weather_info/weather_info.txt');
     Response response = await get(uri);
@@ -52,7 +62,7 @@ class _PhotoListScreenState extends State<PhotoListScreen> {
         weatherInfo.add(temperatures);
       }
     }
-    _getPhotoGalleryProgress = false;
+    _getWeatherInfoScreenProgress = false;
     setState(() {});
   }
 }
