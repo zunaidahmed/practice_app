@@ -28,23 +28,30 @@ class _WeatherInfoScreenState extends State<WeatherInfoScreen> {
       body: Visibility(
         visible: _getWeatherInfoScreenProgress == false,
         replacement: const Center(child: CircularProgressIndicator()),
-        child: ListView.builder(
+        child: ListView.separated(
             itemCount: weatherInfo.length,
             itemBuilder: (context, index) {
-             return Column(
-               mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text('City: ${weatherInfo[index].city ??  ''}'),
-                 // Text(weatherInfo[index].temperature ?? ''),
-                  Text(weatherInfo[index].condition ?? ''),
-                 // Text(weatherInfo[index].humidity ?? ''),
-                 // Text(weatherInfo[index].windSpeed ?? ''),
-                ],
-                
-              );
+             return Padding(
+               padding: const EdgeInsets.all(8.0),
+               child: Column(
+                 crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('City: ${weatherInfo[index].city ??  ''}'),
+                    Text(weatherInfo[index].temperature?.toString() ?? ''),
+                    Text(weatherInfo[index].condition ?? ''),
+                    Text(weatherInfo[index].humidity ?.toString() ?? ''),
+                    Text(weatherInfo[index].windSpeed?.toString() ?? ''),
+                  ],
+
+                ),
+             );
 
              
-            }),
+            }, separatorBuilder: (BuildContext context, int index) {
+
+          return const Divider();
+
+        },),
       ),
     );
   }
